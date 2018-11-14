@@ -1,6 +1,5 @@
 package com.company;
 
-
 public class Fraction{
     private int numerator;
     private int denominator = 1;
@@ -10,15 +9,18 @@ public class Fraction{
             System.out.println("Denominator can't be zero. Choose another one.");
             return;
         }
-        if(numerator>denominator){
-            int num1=numerator-((numerator/denominator)*denominator);
-            System.out.println(numerator/denominator + " " + num1 + "/" + denominator );
-        }else{
-            System.out.println(numerator + "/" + denominator);
-        }
         this.numerator = numerator * (denominator < 0 ? -1 : 1);
         this.denominator = Math.abs(denominator);
         //normalization();
+    }
+
+    public String toString() {
+        if (numerator > denominator) {
+            int num1 = numerator - ((numerator / denominator) * denominator);
+            return numerator / denominator + " " + num1 + "/" + denominator;
+        }else{
+            return numerator + "/" + denominator;
+        }
     }
 
 
@@ -76,12 +78,6 @@ public class Fraction{
     public double toDecimalFractions(){ // результат деления в виде десятичной дроби
         return (double) numerator / denominator;
     }
-
-    public String toString(){ // вывод дроби на печать
-        return new String(numerator + " / " + denominator);
-    }
-
-
 
     public static Fraction mult(Fraction obj1, Fraction obj2){
         return new Fraction(obj1.numerator * obj2.numerator , obj1.denominator * obj2.denominator);
